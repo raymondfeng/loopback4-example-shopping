@@ -29,6 +29,12 @@ import {
 import {PasswordHasherBindings} from './keys';
 import {BcryptHasher} from './services/hash.password.bcryptjs';
 import {JWTAuthenticationStrategy} from './authentication-strategies/jwt-strategy';
+import {
+  AuthorizationComponent,
+  AuthorizationTags,
+} from '@loopback/authorization';
+import {createEnforcer} from './services/enforcer';
+import {CasbinAuthorizationProvider} from './services/authorizor';
 
 /**
  * Information from package.json
@@ -52,7 +58,15 @@ export class ShoppingApplication extends BootMixin(
 
     // Bind authentication component related elements
     this.component(AuthenticationComponent);
+    this.component(AuthorizationComponent);
 
+    // authorization
+    this.bind('casbin.enforcer').toDynamicValue(createEnforcer);
+    this.bind('authorizationProviders.casbin-provider')
+      .toProvider(CasbinAuthorizationProvider)
+      .tag(AuthorizationTags.AUTHORIZER);
+
+    // authentication
     registerAuthenticationStrategy(this, JWTAuthenticationStrategy);
 
     // Set up the custom sequence
