@@ -38,6 +38,9 @@
   },
   "devDependencies": {
     "@loopback/build": "2.0.11",
+    "@grpc/proto-loader": "0.5.1",
+    "grpc": "1.23.3",
+    "@loopback/testlab": "1.8.0",
     "@types/express": "4.17.1",
     "@types/node": "12.7.7",
     "typescript": "3.6.3"

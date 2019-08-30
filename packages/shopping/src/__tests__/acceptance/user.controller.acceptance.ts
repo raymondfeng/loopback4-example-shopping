@@ -252,7 +252,7 @@ describe('UserController', () => {
       const newUser = await createAUser();
       await client
         .get(`/users/${newUser.id}/recommend`)
-        .expect(200, recommendations);
+        .expect(200, recommendations['user001']);
     });
   });
 
