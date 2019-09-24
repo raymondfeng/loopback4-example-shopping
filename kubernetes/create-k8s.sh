@@ -11,7 +11,7 @@ minikube start -p ${CLUSTER_NAME}
 # Build docker images for shopping and recommender for the minikube cluster
 pushd "${BASE_DIR}/.."
 eval $(minikube -p ${CLUSTER_NAME} docker-env)
-npx lerna run docker:build
+npm run docker:build
 popd
 
 kubectl config use-context ${CLUSTER_NAME}

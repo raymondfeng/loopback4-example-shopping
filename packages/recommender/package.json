@@ -19,7 +19,6 @@
     "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
     "prestart": "npm run build",
     "start": "node .",
-    "docker:build": "docker build -t recommender .",
     "docker:run": "docker run -p 3001:3001 -p 50051:50051 -d recommender"
   },
   "repository": {

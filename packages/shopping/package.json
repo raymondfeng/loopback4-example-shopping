@@ -27,7 +27,6 @@
     "start:app": "node .",
     "start:recommender": "node ../recommender",
     "prepublishOnly": "npm run test",
-    "docker:build": "npm run clean && npm run build && docker build -t shopping .",
     "docker:run": "docker run -p 3000:3000 -d shopping"
   },
   "repository": {
